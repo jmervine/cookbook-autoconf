@@ -2,21 +2,31 @@
 
 # Requirements
 
-None
+    build-essentials -- [http://community.opscode.com/cookbooks/build-essential]
 
 # Usage
 
+    # file: nodes/host.json
     {
-        [ "recipe[autoconf::default]" ]
+        // Required for build-essential.
+        //
+        // See build-essential docs for custom configs,
+        // empty configs as below are acceptable for
+        // defaults.
+        "build_essential": {},
+
+        // Include autoconf recipe.
+        "run_list": [ "recipe[autoconf::default]" ]
     }
 
 # Attributes
 
+    # file: nodes/host.json
     {
-        // optional
        "autoconf": {
-           "version": "2.69", // default
-           "path": "http://ftp.gnu.org/gnu/autoconf/"
+            // defaults below
+            "version": "2.69",
+            "path": "http://ftp.gnu.org/gnu/autoconf/"
        }
        ...
     }
