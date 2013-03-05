@@ -6,6 +6,12 @@
 #
 # All rights reserved - Do Not Redistribute
 #
+if node["platform"] == "windows"
+  return "#{node['platform']} is not supported by the #{cookbook_name}::#{recipe_name} recipe"
+end
+
+include_recipe "build-essential"
+
 defaults = {
   :ver => "2.69",
   :path => "http://ftp.gnu.org/gnu/autoconf/"
@@ -41,7 +47,7 @@ execute "make autoconf" do
 end
 
 execute "make install autoconf" do
-  command "sudo make install"
+  command "make install"
   cwd "/usr/local/src/autoconf-#{autoconf_ver}"
   not_if {File.exists?("#{autoconf_dir}/autoconf") && `#{autoconf_dir}/autoconf --version`.chomp =~ /#{autoconf_ver}/}
   creates "#{autoconf_dir}/autoconf"
