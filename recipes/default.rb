@@ -2,10 +2,6 @@
 # Cookbook Name:: autoconf
 # Recipe:: default
 #
-# Copyright (C) 2013 Joshua Mervine
-#
-# All rights reserved - Do Not Redistribute
-#
 if node["platform"] == "windows"
   return "#{node['platform']} is not supported by the #{cookbook_name}::#{recipe_name} recipe"
 end
