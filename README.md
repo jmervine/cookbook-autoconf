@@ -2,7 +2,11 @@
 
 # Requirements
 
-    build-essentials -- [http://community.opscode.com/cookbooks/build-essential]
+* [build-essentials](http://community.opscode.com/cookbooks/build-essential)
+
+## This has been tested on:
+
+* CentOS 6.2
 
 # Usage
 
