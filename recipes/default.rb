@@ -12,6 +12,15 @@ end
 
 include_recipe "build-essential"
 
+case node["platform_family"]
+when "debian"
+  include_recipe "apt"
+  package "libtool"
+when "rhel"
+  include_recipe "yum"
+  package "libtool"
+end
+
 defaults = {
   :ver => "2.69",
   :path => "http://ftp.gnu.org/gnu/autoconf/"
